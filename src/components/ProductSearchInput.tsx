@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import styled from '../themes';
 import { ProductFilterType } from '../types';
@@ -42,7 +42,6 @@ const Button = styled(ButtonBase)`
 `;
 
 const ProductSearchInput: React.FC<ProductFilterType> = (props) => {
-  const inputRef = useRef(null);
   const { products, onSearchDone } = props;
 
   const handleSubmitSearch = useCallback(
@@ -57,8 +56,6 @@ const ProductSearchInput: React.FC<ProductFilterType> = (props) => {
       } else {
         onSearchDone(resultProducts);
       }
-
-      inputRef.current.value = '';
     },
     [onSearchDone, products]
   );
@@ -68,7 +65,6 @@ const ProductSearchInput: React.FC<ProductFilterType> = (props) => {
       <InputSearch
         type="text"
         placeholder="Search Furniture Name"
-        ref={inputRef}
         name="inputSearch"
         minLength={3}
       />

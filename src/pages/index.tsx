@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React, { useEffect, useState, useCallback } from 'react';
 
 import {
@@ -37,6 +38,8 @@ const HomePage: React.FC<CatalogType> & {
 
   const handleFilterDone = useCallback((productsFiltered) => {
     setProductsDisplayed(productsFiltered);
+    setIsShowStyleFilter(false);
+    setIsShowDeliveryFilter(false);
   }, []);
 
   const handleDeliveryFilter = useCallback(() => {
@@ -61,82 +64,91 @@ const HomePage: React.FC<CatalogType> & {
   }
 
   return (
-    <Section>
-      <FlexWrapper>
-        <Title>FURNITURE CATALOG</Title>
-        <ProductSearchInput
-          products={products}
-          onSearchDone={handleFilterDone}
-        />
-      </FlexWrapper>
-      <FilterWrapper>
-        <ButtonFilter
-          onClick={handleDeliveryFilter}
-          background={
-            isShowDeliveryFilter ? theme.color.grey : theme.color.yellow
-          }
-          textColor={
-            isShowDeliveryFilter ? theme.color.white : theme.color.black
-          }
-        >
-          {isShowDeliveryFilter
-            ? 'Close Filter by Delivery Time'
-            : 'Filter by Delivery Time'}
-        </ButtonFilter>
-        <ButtonFilter
-          onClick={handleStyleFilter}
-          background={isShowStyleFilter ? theme.color.grey : theme.color.yellow}
-          textColor={isShowStyleFilter ? theme.color.white : theme.color.black}
-        >
-          {isShowStyleFilter
-            ? 'Close Filter by Furniture Style'
-            : 'Filter by Furniture Style'}
-        </ButtonFilter>
-      </FilterWrapper>
-      {isShowDeliveryFilter && (
-        <ProductsFilter
-          products={products}
-          onSearchDone={handleFilterDone}
-          optionData={deliveryTimeData}
-          filterMethod="deliveryTime"
-        />
-      )}
-      {isShowStyleFilter && (
-        <ProductsFilter
-          products={products}
-          onSearchDone={handleFilterDone}
-          optionData={furnitureStylesData(stylesDisplayed)}
-          filterMethod="furnitureStyles"
-        />
-      )}
-      {!hasProducts && <NoDataFound onClose={handleCloseFilter} />}
-      <ProductsWrapper>
-        {hasProducts &&
-          (productsDisplayed || []).map((item: ProductsType) => {
-            const {
-              deliveryTime,
-              deliveryTimeWeek,
-              description,
-              furnitureStyle,
-              name,
-              price,
-            } = item;
+    <>
+      <Head>
+        <title>Sofalog</title>
+      </Head>
+      <Section>
+        <FlexWrapper>
+          <Title>SOFALOG</Title>
+          <ProductSearchInput
+            products={products}
+            onSearchDone={handleFilterDone}
+          />
+        </FlexWrapper>
+        <FilterWrapper>
+          <ButtonFilter
+            onClick={handleDeliveryFilter}
+            background={
+              isShowDeliveryFilter ? theme.color.grey : theme.color.yellow
+            }
+            textColor={
+              isShowDeliveryFilter ? theme.color.white : theme.color.black
+            }
+          >
+            {isShowDeliveryFilter
+              ? 'Close Filter by Delivery Time'
+              : 'Filter by Delivery Time'}
+          </ButtonFilter>
+          <ButtonFilter
+            onClick={handleStyleFilter}
+            background={
+              isShowStyleFilter ? theme.color.grey : theme.color.yellow
+            }
+            textColor={
+              isShowStyleFilter ? theme.color.white : theme.color.black
+            }
+          >
+            {isShowStyleFilter
+              ? 'Close Filter by Furniture Style'
+              : 'Filter by Furniture Style'}
+          </ButtonFilter>
+        </FilterWrapper>
+        {isShowDeliveryFilter && (
+          <ProductsFilter
+            products={products}
+            onSearchDone={handleFilterDone}
+            optionData={deliveryTimeData}
+            filterMethod="deliveryTime"
+          />
+        )}
+        {isShowStyleFilter && (
+          <ProductsFilter
+            products={products}
+            onSearchDone={handleFilterDone}
+            optionData={furnitureStylesData(stylesDisplayed)}
+            filterMethod="furnitureStyles"
+          />
+        )}
+        {!hasProducts && <NoDataFound onClose={handleCloseFilter} />}
+        <ProductsWrapper>
+          {hasProducts &&
+            (productsDisplayed || []).map((item: ProductsType) => {
+              const {
+                deliveryTime,
+                deliveryTimeWeek,
+                description,
+                furnitureStyle,
+                name,
+                price,
+              } = item;
 
-            return (
-              <ProductCardWrapper key={name + price}>
-                <ProductCard
-                  deliveryTime={deliveryTime}
-                  deliveryTimeWeek={deliveryTimeWeek}
-                  description={description}
-                  furnitureStyle={furnitureStyle}
-                  name={name}
-                  price={price}
-                />
-              </ProductCardWrapper>
-            );
-          })}
-      </ProductsWrapper>
-    </Section>
+              return (
+                <ProductCardWrapper key={name + price}>
+                  <ProductCard
+                    deliveryTime={deliveryTime}
+                    deliveryTimeWeek={deliveryTimeWeek}
+                    description={description}
+                    furnitureStyle={furnitureStyle}
+                    name={name}
+                    price={price}
+                  />
+                </ProductCardWrapper>
+              );
+            })}
+        </ProductsWrapper>
+      </Section>
+    </>
   );
 };
 
