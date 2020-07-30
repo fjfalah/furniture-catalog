@@ -1,15 +1,10 @@
 import React, { useRef, useCallback } from 'react';
 
 import styled from '../themes';
-import { ProductsType } from '../types';
+import { ProductFilterType } from '../types';
 import { filterByKeywordName } from '../utils/filters';
 
 import ButtonBase from './Button';
-
-type ProductSearchInputType = {
-  products: ProductsType[];
-  onSearchDone: (products: ProductsType[]) => void;
-};
 
 const Root = styled.form`
   display: flex;
@@ -46,7 +41,7 @@ const Button = styled(ButtonBase)`
   right: 10px;
 `;
 
-const ProductSearchInput: React.FC<ProductSearchInputType> = (props) => {
+const ProductSearchInput: React.FC<ProductFilterType> = (props) => {
   const inputRef = useRef(null);
   const { products, onSearchDone } = props;
 

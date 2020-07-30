@@ -82,7 +82,6 @@ const ProductCard: React.FC<ProductsType> = (props) => {
   const formatDelivery = `${deliveryTime} day(s) delivery`;
   const formatDescription = textWithMaxLength(description, maxDescLength);
   const descLength = description.length;
-
   const handleMoreDescription = useCallback(() => {
     setIsFullDescription(!isFullDescription);
   }, [isFullDescription]);

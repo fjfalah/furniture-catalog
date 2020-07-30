@@ -20,7 +20,14 @@ export const filterByFurnitureStyle = (
 
 export const filterByDeliveryTime = (
   products: ProductsType[],
-  time: string
+  time: number[]
 ): ProductsType[] => {
-  return null;
+  return (products || []).filter((item) => {
+    const filterTime = time;
+    const deliveryTimeWeek = parseInt(item.deliveryTimeWeek, 10);
+
+    return filterTime.includes(deliveryTimeWeek);
+
+    // return deliveryTimeWeek === filterTime;
+  });
 };

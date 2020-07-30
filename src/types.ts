@@ -1,5 +1,6 @@
 export type ProductsType = {
   deliveryTime: string;
+  deliveryTimeWeek: string;
   description: string;
   furnitureStyle: string[];
   name: string;
@@ -11,4 +12,9 @@ export type FurnitureType = string[];
 export type CatalogType = {
   furnitureStyles: FurnitureType;
   products: ProductsType[];
+};
+
+export type ProductFilterType = {
+  products: ProductsType[];
+  onSearchDone: (productsFiltered: ProductsType[]) => void;
 };
