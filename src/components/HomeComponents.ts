@@ -20,6 +20,7 @@ export const FilterWrapper = styled(FlexWrapper)`
 
 export const ButtonFilter = styled(Button)`
   margin-left: 10px;
+  margin-bottom: 10px;
 `;
 export const Title = styled.h2`
   font-size: 40px;

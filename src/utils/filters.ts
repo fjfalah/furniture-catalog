@@ -17,7 +17,6 @@ export const filterByFurnitureStyle = (
 ): ProductsType[] => {
   return (products || []).filter((item) => {
     const { furnitureStyle } = item;
-    // console.log(styles, furnitureStyle);
     return styles.some((style) => furnitureStyle.includes(style));
   });
 };
