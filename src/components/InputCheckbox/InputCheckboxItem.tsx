@@ -75,7 +75,7 @@ const Label = styled.span`
 `;
 
 export type InputCheckboxItemType = React.FC<
-  { label?: string } & React.InputHTMLAttributes<HTMLElement>
+  { label?: string | number } & React.InputHTMLAttributes<HTMLElement>
 >;
 
 const InputCheckboxItem: InputCheckboxItemType = (props) => {

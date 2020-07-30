@@ -18,3 +18,8 @@ export type ProductFilterType = {
   products: ProductsType[];
   onSearchDone: (productsFiltered: ProductsType[]) => void;
 };
+
+export type OptionDataType = {
+  value: string | number;
+  label: string | number;
+};

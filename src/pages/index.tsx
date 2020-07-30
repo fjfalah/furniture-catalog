@@ -5,57 +5,19 @@ import {
   ProductCard,
   ProductSearchInput,
   NoDataFound,
-  FilterDeliveryTime,
-  Button,
+  ProductsFilter,
 } from '../components';
-import styled, { theme } from '../themes';
+import {
+  ButtonFilter,
+  FilterWrapper,
+  FlexWrapper,
+  ProductCardWrapper,
+  ProductsWrapper,
+  Title,
+} from '../components/HomeComponents';
+import { theme } from '../themes';
 import { ProductsType, CatalogType } from '../types';
-
-const FlexWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  @media only screen and (max-width: 720px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const FilterWrapper = styled(FlexWrapper)`
-  justify-content: flex-end;
-`;
-
-const ButtonFilter = styled(Button)`
-  margin-left: 10px;
-`;
-const Title = styled.h2`
-  font-size: 40px;
-  font-weight: bold;
-  color: ${(props) => props.theme.color.white};
-`;
-
-const ProductsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-
-const ProductCardWrapper = styled.div`
-  width: 50%;
-
-  @media only screen and (max-width: 720px) {
-    width: 100%;
-  }
-`;
-
-const DeliveryFilterText = styled.label`
-  font-size: 20px;
-  font-weight: bold;
-  color: ${(props) => props.theme.color.white};
-  margin-right: 20px;
-`;
+import { deliveryTimeData, furnitureStylesData } from '../utils/optionData';
 
 const HomePage: React.FC<CatalogType> & {
   getInitialProps: () => void;
@@ -132,9 +94,19 @@ const HomePage: React.FC<CatalogType> & {
         </ButtonFilter>
       </FilterWrapper>
       {isShowDeliveryFilter && (
-        <FilterDeliveryTime
+        <ProductsFilter
           products={products}
           onSearchDone={handleFilterDone}
+          optionData={deliveryTimeData}
+          filterMethod="deliveryTime"
+        />
+      )}
+      {isShowStyleFilter && (
+        <ProductsFilter
+          products={products}
+          onSearchDone={handleFilterDone}
+          optionData={furnitureStylesData(stylesDisplayed)}
+          filterMethod="furnitureStyles"
         />
       )}
       {!hasProducts && <NoDataFound onClose={handleCloseFilter} />}

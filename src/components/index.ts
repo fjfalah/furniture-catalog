@@ -5,4 +5,4 @@ export { default as Pill } from './Pill';
 export { default as ProductCard } from './ProductCard';
 export { default as ProductSearchInput } from './ProductSearchInput';
 export { default as Section } from './Section';
-export { default as FilterDeliveryTime } from './FilterDeliveryTime';
+export { default as ProductsFilter } from './ProductsFilter';

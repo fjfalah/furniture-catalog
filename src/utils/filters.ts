@@ -15,19 +15,24 @@ export const filterByFurnitureStyle = (
   products: ProductsType[],
   styles: string[]
 ): ProductsType[] => {
-  return null;
+  return (products || []).filter((item) => {
+    const { furnitureStyle } = item;
+    // console.log(styles, furnitureStyle);
+    return styles.some((style) => furnitureStyle.includes(style));
+  });
 };
 
 export const filterByDeliveryTime = (
   products: ProductsType[],
-  time: number[]
+  time: string[]
 ): ProductsType[] => {
   return (products || []).filter((item) => {
-    const filterTime = time;
+    const filterTime = [];
+    time.map((filter) => {
+      return filterTime.push(parseInt(filter, 10));
+    });
     const deliveryTimeWeek = parseInt(item.deliveryTimeWeek, 10);
 
     return filterTime.includes(deliveryTimeWeek);
-
-    // return deliveryTimeWeek === filterTime;
   });
 };
