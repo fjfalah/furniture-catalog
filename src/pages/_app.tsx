@@ -2,7 +2,7 @@ import { AppProps } from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyles from '../components/GlobalStyles';
+import { GlobalStyles } from '../components';
 import CatalogProvider from '../provider/catalog';
 import { theme } from '../themes';
 

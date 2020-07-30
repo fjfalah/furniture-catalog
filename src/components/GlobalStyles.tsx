@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     color: ${theme.color.black};
-    background: ${theme.color.white};
+    background: ${theme.color.green};
     font-family: 'Baloo Thambi 2', cursive;
   }
 `;

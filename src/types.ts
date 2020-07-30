@@ -3,7 +3,7 @@ export type ProductsType = {
   description: string;
   furnitureStyle: string[];
   name: string;
-  price: number;
+  price: number | string;
 };
 
 export type FurnitureType = string[];
