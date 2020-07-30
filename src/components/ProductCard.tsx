@@ -14,6 +14,11 @@ const Root = styled.div`
   padding: 16px;
   border-radius: 8px;
   margin: 8px;
+  box-shadow: ${(props) => props.theme.boxShadow};
+
+  &:hover {
+    box-shadow: ${(props) => props.theme.boxShadowHover};
+  }
 `;
 
 const Header = styled.div`
@@ -74,10 +79,9 @@ const ProductCard: React.FC<ProductsType> = (props) => {
   const [isFullDescription, setIsFullDescription] = useState(false);
   const { deliveryTime, description, furnitureStyle, name, price } = props;
   const formatPrice = toIndonesianCurrency(price);
-  const formatDelivery = `${deliveryTime} day(s)`;
+  const formatDelivery = `${deliveryTime} day(s) delivery`;
   const formatDescription = textWithMaxLength(description, maxDescLength);
   const descLength = description.length;
-  console.log(descLength);
 
   const handleMoreDescription = useCallback(() => {
     setIsFullDescription(!isFullDescription);
@@ -99,7 +103,15 @@ const ProductCard: React.FC<ProductsType> = (props) => {
       </Description>
       <FurnitureStyle>
         {(furnitureStyle || []).map((item) => {
-          return <Pill key={item}>{item}</Pill>;
+          return (
+            <Pill
+              key={item}
+              background={theme.color.yellow}
+              textColor={theme.color.black}
+            >
+              {item}
+            </Pill>
+          );
         })}
       </FurnitureStyle>
       <Delivery>

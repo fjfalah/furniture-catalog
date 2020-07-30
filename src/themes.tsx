@@ -11,6 +11,8 @@ export const theme = {
     lightGrey: '#dee7e7',
   },
   boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+  boxShadowHover:
+    '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
   fontFamily: {
     baloo: 'Baloo Thambi, cursive',
     nunito: 'Nunito, sans-serif',

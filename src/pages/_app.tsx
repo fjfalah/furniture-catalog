@@ -9,10 +9,10 @@ import { theme } from '../themes';
 const AppRoot: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
-      <CatalogProvider>
-        <Component {...pageProps} />
-        <GlobalStyles />
-      </CatalogProvider>
+      {/* <CatalogProvider> */}
+      <Component {...pageProps} />
+      <GlobalStyles />
+      {/* </CatalogProvider> */}
     </ThemeProvider>
   );
 };
