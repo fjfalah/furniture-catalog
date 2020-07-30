@@ -38,6 +38,10 @@ const HomePage: React.FC<CatalogType> & {
 
   const handleFilterDone = useCallback((productsFiltered) => {
     setProductsDisplayed(productsFiltered);
+  }, []);
+
+  const handleSearchDone = useCallback((productsFiltered) => {
+    setProductsDisplayed(productsFiltered);
     setIsShowStyleFilter(false);
     setIsShowDeliveryFilter(false);
   }, []);
@@ -73,7 +77,7 @@ const HomePage: React.FC<CatalogType> & {
           <Title>SOFALOG</Title>
           <ProductSearchInput
             products={products}
-            onSearchDone={handleFilterDone}
+            onSearchDone={handleSearchDone}
           />
         </FlexWrapper>
         <FilterWrapper>
